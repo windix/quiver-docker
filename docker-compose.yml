@@ -9,9 +9,7 @@ services:
       - datasette
 
   datasette:
-    image: datasetteproject/datasette:0.64.8
-    # for arm64 version, use the following image
-    # image: windix/datasette:0.64.8
+    image: windix/datasette:0.64.8
     ports:
       - "8889:8001"
     volumes:
