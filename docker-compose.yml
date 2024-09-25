@@ -1,0 +1,30 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "8888:80"
+    depends_on:
+      - datasette
+
+  datasette:
+    image: datasetteproject/datasette:0.64.8
+    ports:
+      - "8889:8001"
+    volumes:
+      - data:/data
+    command: datasette -p 8001 -h 0.0.0.0 --cors /data/quiver.db
+    depends_on:
+      - quiver-converter
+
+  quiver-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - data:/data
+      - /home/windix/src/quiver/Kmart.qvlibrary:/mnt/quiver
+
+volumes:
+  data:
