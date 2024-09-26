@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8888:80"
+    # volumes:
+    #   - ./nginx/public:/usr/share/nginx/html
     depends_on:
       - datasette
 
