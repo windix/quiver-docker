@@ -8,7 +8,7 @@ COPY Pipfile Pipfile.lock ./
 
 RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
 
-COPY quiver-parser.py run.sh ./
+COPY . .
 
 RUN touch crontab.tmp \
     && echo '*/5 * * * * /app/run.sh' >> crontab.tmp \

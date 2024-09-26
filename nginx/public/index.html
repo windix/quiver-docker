@@ -34,8 +34,8 @@ let requestInFlight = null;
 searchbox.onkeyup = debounce(() => {
   const q = searchbox.value;
   const url = (
-    "http://localhost:8889/quiver.json?sql=" +
-    //"./db/quiver.json?sql=" +
+    //"http://localhost:8889/quiver.json?sql=" +
+    "./db/quiver.json?sql=" +
     encodeURIComponent(sql) +
     `&search=${encodeURIComponent(q)}&_shape=array`
   );
